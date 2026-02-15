@@ -1,16 +1,15 @@
+import type { Metadata } from "next";
 import "./globals.css";
 
-export const metadata = {
-  title: "Clawbound",
-  description: "Solana-only screener"
+export const metadata: Metadata = {
+  title: "ClawBound Reboot",
+  description: "ClawBound projesinin sıfırdan yeniden kurulan başlangıç sürümü"
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <body className="bg-[#0b0f14] text-zinc-100 font-sans">
-        {children}
-      </body>
+    <html lang="tr">
+      <body>{children}</body>
     </html>
   );
 }
