@@ -2,7 +2,9 @@
   "name": "clawbound",
   "version": "0.2.0",
   "private": true,
-  "engines": { "node": ">=18.18.0" },
+  "engines": {
+    "node": "20.x"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
