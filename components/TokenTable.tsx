@@ -202,12 +202,14 @@ export default function TokenTable(props: {
         {!props.loading && sorted.length === 0 ? <div className="p-6"><Empty /></div> : null}
 
         {sorted.length > 0 ? (
-          <Virtuoso
-            data={sorted}
-            fixedHeaderContent={() => <Header />}
-            itemContent={(i) => Row(i)}
-            style={{ height: "100%" }}
-          />
+          <>
+            <Header />
+            <Virtuoso
+              data={sorted}
+              itemContent={(i) => Row(i)}
+              style={{ height: "calc(100% - 41px)" }}
+            />
+          </>
         ) : null}
       </div>
 
