@@ -4,13 +4,13 @@ import Sidebar from "@/components/Sidebar";
 import TopStats from "@/components/TopStats";
 import ControlBar, { HomeTab, RankBy, Timeframe, Category } from "@/components/ControlBar";
 import TokenTable, { ColumnKey } from "@/components/TokenTable";
-import { useEffect, useMemo, useState } from "react";
+import { Suspense, useEffect, useMemo, useState } from "react";
 import { fetchHomeList } from "@/lib/clientApi";
 import { useSearchParams, useRouter } from "next/navigation";
 
 const DEFAULT_COLUMNS: ColumnKey[] = ["token", "price", "change6h", "change24h", "liquidity", "volume24h", "mcap", "fdv"];
 
-export default function Home() {
+function HomeContent() {
   const sp = useSearchParams();
   const router = useRouter();
 
@@ -120,5 +120,13 @@ export default function Home() {
         </footer>
       </main>
     </div>
+  );
+}
+
+export default function Home() {
+  return (
+    <Suspense fallback={<div className="flex min-h-screen items-center justify-center text-sm text-white/60">Loading…</div>}>
+      <HomeContent />
+    </Suspense>
   );
 }
